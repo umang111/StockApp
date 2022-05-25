@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,17 @@ public class StockController {
         stocks.add(new Stock(4,"Accenture","NSE",25));
     }
      
+    //delete by id
+    @DeleteMapping(value="/stock/{id}")
+    public Stock deleteById(@PathVariable int StockId) {
+    	for(Stock stock: stocks) {
+    		if(StockId==stock.getId()) {
+    			stocks.remove(StockId);
+    		}
+    	}
+    	return null;
+    }
+    
 
     //update stock by id
 
